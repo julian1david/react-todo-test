@@ -24,6 +24,7 @@ export function App() {
     localStorage.setItem(KEY,JSON.stringify(todos))
   },[todos])
 
+
   const toggleTodo = (id) => {
     const newTodos = [...todos];
     const todo = newTodos.find(todo => todo.id === id);
