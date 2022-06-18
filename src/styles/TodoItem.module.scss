@@ -1,0 +1,13 @@
+.TodoItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 240px;
+    max-width: 320px;
+    padding: 1rem;
+    background-color: rgb(202, 193, 193);
+    border-radius: 1rem;
+    &__text{
+        text-decoration:line-through
+    }
+}

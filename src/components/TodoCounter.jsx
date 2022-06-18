@@ -1,9 +1,12 @@
-import './TodoCounter.css'
+import styles from '../styles/TodoCounter.module.scss'
 
 function TodoCounter({ todos }) {
 	return (
 		<div>
-			<p className='TodoCounter'>You have {todos.filter(todo => !todo.completed).length} to complete</p>
+			<p className={styles.TodoCounter}>
+			You have {todos.filter(todo => !todo.completed).length} 
+			of  {todos.length}
+			to complete</p>
 		</div>
 	);
 }
