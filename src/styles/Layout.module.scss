@@ -1,11 +1,11 @@
 
 .glassmorphism {
-	background: rgba(52, 123, 255, 0.25);
-	box-shadow: 0 4px 16px 0 rgba(58, 70, 238, 0.37);
+	background: rgba(208, 208, 208, 0.25);
+	box-shadow: 0 4px 16px 0 rgba(242, 243, 248, 0.37);
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
 	border-radius: 10px;
-	border: 1px solid rgba(95, 126, 241, 0.18);
+	border: 1px solid rgba(241, 243, 251, 0.18);
 }
 
 .mainContainer{
@@ -18,15 +18,15 @@
 
 .createTask{
     @extend .glassmorphism;
-    min-width: 20rem;
-    width: 30rem;
+    min-width: 30rem;
     padding: 20px;
-    
 }
 
 .todoTasks{
-    width: 60rem;
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 66%;
+    gap: 1rem;
+    padding: 20px;
 }

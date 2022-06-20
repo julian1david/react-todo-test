@@ -55,13 +55,28 @@ export function App() {
 			<Layout className='mainContainer'>
 				<Layout className='createTask'>
 					<Title>Todo List</Title>
+					<h3>Task name</h3>
+					<CreateInput  
+						className='TodoTaskCreate'
+						innerRef={todoTaskRef} 
+						type='text' 
+						placeholder='New task' />
+					<CreateButton className='addButton' onClick={handleTodoAdd}>+</CreateButton>
 				</Layout>
 				<Layout className="todoTasks">
 					<TodoCounter todos={todos} />
-					<CreateInput innerRef={todoTaskRef} type='text' placeholder='New task' />
+					<CreateInput  
+						className='TodoTaskCreate'
+						type='text' 
+						placeholder='Search task' />
 					<TodoList todos={todos} toggleTodo={toggleTodo} />
-					<CreateButton onClick={handleTodoAdd}>➕</CreateButton>
-					<CreateButton onClick={handleClearAll}>🗑</CreateButton>
+					{todos.length > 0 &&
+						<CreateButton 
+							className='hideButton' 
+							onClick={handleClearAll}>
+							Hide completed tasks
+						</CreateButton>
+					}
 				</Layout>
 			</Layout>
 		</Fragment>

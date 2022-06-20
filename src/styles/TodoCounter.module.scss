@@ -1,5 +1,8 @@
+@import './Main.scss';
+
 .TodoCounter{
-    font-size: 2rem;
-    font-weight: 300;
+    color: $light-white;
+    font-size: 3rem;
+    font-weight: 600;
     text-align: center;
 }
