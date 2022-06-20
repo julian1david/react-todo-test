@@ -8,13 +8,20 @@
 5.Miscelanios u otros
 */
 
+$blue: #1d4fd8;
+
+
+*{
+	padding: 0;
+	margin: 0;
+}
+
 html {
 	font-size: 62.5%;
 }
 
 body {
-	background-image: linear-gradient(to right, #8360c3, #2ebf91);
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	/* background-image: linear-gradient(to right, #8360c3, #2ebf91); */
+	font-family: 'Nunito Sans', sans-serif;
 }
 

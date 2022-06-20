@@ -1,10 +1,12 @@
 import { Fragment, useState, useRef, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 
+import { Layout } from './components/Layout';
+import { Title } from './components/Title';
+import { CreateButton } from './components/CreateButton';
+import { CreateInput } from './components/CreateInput';
 import { TodoList } from './components/TodoList';
 import { TodoCounter } from './components/TodoCounter';
-import { CreateButton } from './components/CreateButton';
-import { Layout } from './components/Layout';
 
 
 const KEY = 'todoAPP.todos';
@@ -52,13 +54,13 @@ export function App() {
 		<Fragment>
 			<Layout className='mainContainer'>
 				<Layout className='createTask'>
-					<h1>Create a new task</h1>
-					<input ref={todoTaskRef} type='text' placeholder='New task' />
-					<CreateButton onClick={handleTodoAdd}>➕</CreateButton>
+					<Title>Todo List</Title>
 				</Layout>
 				<Layout className="todoTasks">
 					<TodoCounter todos={todos} />
+					<CreateInput innerRef={todoTaskRef} type='text' placeholder='New task' />
 					<TodoList todos={todos} toggleTodo={toggleTodo} />
+					<CreateButton onClick={handleTodoAdd}>➕</CreateButton>
 					<CreateButton onClick={handleClearAll}>🗑</CreateButton>
 				</Layout>
 			</Layout>

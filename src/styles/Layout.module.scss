@@ -1,33 +1,32 @@
 
 .glassmorphism {
-	background: rgba(255, 82, 82, 0.25);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	background: rgba(52, 123, 255, 0.25);
+	box-shadow: 0 4px 16px 0 rgba(58, 70, 238, 0.37);
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
 	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
+	border: 1px solid rgba(95, 126, 241, 0.18);
 }
 
 .mainContainer{
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    gap: 4rem;
     width: 100%;
     height: 100vh;
-    padding: 40px;
+    padding: 30px;
 }
 
 .createTask{
-    width: 30%;
-    height: 90%;
-    @extend .glassmorphism
+    @extend .glassmorphism;
+    min-width: 20rem;
+    width: 30rem;
+    padding: 20px;
+    
 }
 
 .todoTasks{
-    width: 50%;
-    height: 90%;
+    width: 60rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    @extend .glassmorphism
 }
