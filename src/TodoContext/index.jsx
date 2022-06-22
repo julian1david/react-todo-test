@@ -58,22 +58,24 @@ function TodoProvider(props) {
         setTodos(newTodos);
     };
 
-    // value provide a props information
-    <TodoContext.Provider value={{
-        todoTaskRef,
-        completedTodos,
-        dataStatus,
-        todos,
-        totalTodos,
-        searchValue,
-        setSearch,
-        handleTodoAdd,
-        handleClearAll,
-        deleteToDo,
-        toggleTodo,
-    }}>
-        {props.children}
-    </TodoContext.Provider>
+    /* value provide a props information Doble key becose return an object */
+    return (
+        <TodoContext.Provider value={{
+            todoTaskRef,
+            completedTodos,
+            dataStatus,
+            todos,
+            totalTodos,
+            searchValue,
+            setSearch,
+            handleTodoAdd,
+            handleClearAll,
+            deleteToDo,
+            toggleTodo,
+        }}>
+            {props.children}
+        </TodoContext.Provider>
+    );
 }
 
-export { TodoProvider }
+export { TodoContext, TodoProvider }

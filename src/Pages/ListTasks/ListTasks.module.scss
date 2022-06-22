@@ -1,0 +1,11 @@
+@import '../../styles/Main.scss';
+
+.ListTasks {
+    position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 66%;
+	gap: 1rem;
+	padding: 20px;
+
+}

@@ -1,12 +1,16 @@
-import style from '../Inputs/CreateInput.module.scss';
+import { useContext } from 'react';
+import { TodoContext } from '../../TodoContext';
+import style from '../CreateTask/CreateTask.module.scss';
 
-function TodoSearch({ search, setSearch }) {
+function TodoSearch() {
+
+	const { search, setSearch } = useContext(TodoContext);
+
 	const handleSearch = e => {
 		setSearch(e.target.value);
 	};
 
 	return (
-		<>
 			<input
 				className={style.TodoTaskCreate}
 				type='text'
@@ -14,8 +18,6 @@ function TodoSearch({ search, setSearch }) {
 				onChange={handleSearch}
 				value={search}
 			/>
-			<p>{search}</p>
-		</>
 	);
 }
 

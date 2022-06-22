@@ -1,7 +1,10 @@
+import { useContext } from 'react';
+import { TodoContext } from '../../TodoContext';
 import styles from './TodoCounter.module.scss';
 
-function TodoCounter({ completedTodos, totalTodos }) {
+function TodoCounter() {
 	
+	const {totalTodos, completedTodos } = useContext(TodoContext) 
 
 	return (
 		<h2 className={styles.TodoCounter}>

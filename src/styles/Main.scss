@@ -24,3 +24,12 @@ body {
 	background-image: linear-gradient(to right, #8360c3, #2ebf91);
 	font-family: 'Nunito Sans', sans-serif;
 }
+
+.glassmorphism {
+	background: rgba(208, 208, 208, 0.25);
+	box-shadow: 0 4px 16px 0 rgba(242, 243, 248, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(241, 243, 251, 0.18);
+}
