@@ -1,0 +1,36 @@
+@import '../../styles/Main.scss';
+
+.addButton {
+	position: fixed;
+	right: 40px;
+	bottom: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	background-color: $blue;
+	border: none;
+	border-radius: 40px;
+	font-size: 3rem;
+	font-weight: bold;
+	color: $light-white;
+	cursor: pointer;
+
+	//Cuando regrese a su posición inicial
+	transform: rotate(0);
+	transition: 0.3s ease;
+	&:hover {
+		transform: rotate(180deg);
+	}
+}
+
+.hideButton {
+	padding: 10px;
+	align-self: center;
+	border: none;
+	background-color: $blue;
+	color: $light-white;
+	border-radius: 4px;
+	cursor: pointer;
+}

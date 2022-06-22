@@ -1,0 +1,31 @@
+@import '../../styles/Main.scss';
+
+.TodoItem {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 1.6rem;
+	padding: 1rem;
+	border-radius: 4px;
+	&__text {
+		text-decoration: line-through;
+	}
+}
+
+.Checkbox {
+	appearance: none;
+	width: 22px;
+	height: 22px;
+	background-color: $light-white;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	&:checked {
+		background-color: $blue;
+		&::after {
+			content: '👍';
+		}
+	}
+}
