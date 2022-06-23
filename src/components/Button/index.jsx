@@ -4,7 +4,7 @@ function CreateButton({ onClick, kind, children }) {
 	const className = kind ? style.addButton : style.hideButton;
 
 	return (
-		<button className={className} onClick={onClick}>
+		<button className={className} onClick={onClick} type='button'>
 			{children}
 		</button>
 	);

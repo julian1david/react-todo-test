@@ -37,11 +37,10 @@ function TodoProvider(props) {
 
 	/* use ref of input to create task */
 	const todoTaskRef = useRef();
-
 	/* Create todotask */
 	const handleTodoAdd = () => {
 		const task = todoTaskRef.current.value;
-		console.log(task);
+		console.log(todoTaskRef.current.value);
 		if (task === '') return;
 		const newItems = [...todos];
 		newItems.push({
@@ -50,6 +49,10 @@ function TodoProvider(props) {
 			task,
 		});
 		setTodos(newItems);
+
+		if(openModal){
+			setOpenModal(false);
+		}
 		todoTaskRef.current.value = null;
 	};
 

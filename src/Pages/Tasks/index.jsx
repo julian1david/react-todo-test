@@ -4,6 +4,7 @@ import { TodoCounter } from '../../components/TodoCounter';
 import { TodoSearch } from '../../components/TodoSearch';
 import { TodoContext } from '../../TodoContext';
 import { CreateButton } from '../../components/Button';
+import { Task } from '../Task'
 import { Modal } from '../../components/Modal';
 
 
@@ -21,6 +22,7 @@ export const Tasks = () => {
 	const modalOpen = () => {
 		setOpenModal(!openModal)
 	}
+
 	return (
 		<div className={style.Tasks}>
 			<TodoCounter />
@@ -35,10 +37,11 @@ export const Tasks = () => {
 				</CreateButton>
 			)}
 			<CreateButton kind={true} onClick={modalOpen}>
-				+
+				Modal Test
 			</CreateButton>
 			{openModal && (
-                <Modal >{ searchedTodos[0]?.task}
+                <Modal >
+					<Task modalClass={true}/>
                 </Modal>
             )}
 		</div>

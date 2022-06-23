@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { TodoContext } from '../../TodoContext';
-import style from '../CreateTask/CreateTask.module.scss';
+import style from '../../Pages/Task/Task.module.scss';
 
 function TodoSearch() {
 	

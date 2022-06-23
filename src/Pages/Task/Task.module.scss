@@ -4,4 +4,30 @@
 	@extend .glassmorphism;
 	min-width: 30rem;
 	padding: 20px;
+	position: relative;
+	&__Modal{
+		@extend .glassmorphism;
+		padding: 20px;
+		min-width: 400px;
+		height: 400px;
+		margin: 0 auto;
+	}
 }
+
+.TodoTaskCreate {
+	width: 90%;
+	padding: 10px 6px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 8px;
+	background-color: rgb(217, 217, 217);
+}
+.TodoTaskCreate:focus {
+	outline-color: $light-white;
+}
+.TodoTaskCreate::placeholder {
+	font-size: 1.4rem;
+	vertical-align: 4px;
+}
+
+
