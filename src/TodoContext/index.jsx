@@ -8,7 +8,6 @@ const TodoContext = createContext();
 /* Bridge to provider infor */
 function TodoProvider(props) {
 
-
     /* States */
     const [searchValue, setSearch] = useState('');
 
@@ -16,7 +15,8 @@ function TodoProvider(props) {
     const {
         item: todos,
         saveItem: setTodos,
-        dataStatus,
+        loading,
+        error
     } = useLocalStorage('TODOS_V1', [])
 
     /* Complete todos checkbox */
@@ -30,11 +30,15 @@ function TodoProvider(props) {
     /* Create todotask */
     const handleTodoAdd = () => {
         const task = todoTaskRef.current.value;
+        console.log(task);
         if (task === '') return;
-
-        setTodos(prevTodos => {
-            return [...prevTodos, { id: uuid(), task, completed: false }];
-        });
+        const newItems = [...todos]
+        newItems.push({
+            id: uuid(),
+            complete: false,
+            task
+        })
+        setTodos(newItems);
         todoTaskRef.current.value = null;
     };
 
@@ -63,7 +67,8 @@ function TodoProvider(props) {
         <TodoContext.Provider value={{
             todoTaskRef,
             completedTodos,
-            dataStatus,
+            loading,
+            error,
             todos,
             totalTodos,
             searchValue,

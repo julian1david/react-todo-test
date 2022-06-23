@@ -3,7 +3,8 @@ import { useEffect, useState, } from "react";
 function useLocalStorage(itemName, initialValue) {
 
     /* State whit loading and error status  */
-    const [dataStatus, setDataStatus] = useState({ loading: true, error: false });
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
     /* This is a initial State */
     const [item, setItem] = useState(initialValue);
 
@@ -13,31 +14,35 @@ function useLocalStorage(itemName, initialValue) {
                 /* ItenName is a KEY to localStorage */
                 const localStorageItem = localStorage.getItem(itemName);
                 let parsedItem;
-
-                if (!localStorageItem) {
-                    localStorage.setItem(itemName, JSON.stringify(initialValue))
+                if (!localStorageItem || localStorageItem === undefined) {
+                    localStorage.setItem(itemName, JSON.stringify(initialValue));
+                    parsedItem = initialValue;
                 } else {
                     parsedItem = JSON.parse(localStorageItem);
                 }
-
                 setItem(parsedItem);
-                setDataStatus({ ...dataStatus, loading: false })
+                setLoading(false);
             }
             catch (error) {
                 console.log(error);
+                setLoading(false);
+                setError(true);
             }
-        }, 5000)
+
+        }, 3000)
     }, [])
 
     /* Save item in localStorage */
     const saveItem = (newItem) => {
         try {
+            console.log(JSON.stringify(newItem));
             const stringifiedItem = JSON.stringify(newItem);
             localStorage.setItem(itemName, stringifiedItem);
             setItem(newItem);
         } catch (error) {
             /* In case of error, return this state */
-            setDataStatus({ ...dataStatus, error: true });
+            console.log(error);
+            setError(true);
         }
     };
 
@@ -45,7 +50,8 @@ function useLocalStorage(itemName, initialValue) {
     return {
         item,
         saveItem,
-        dataStatus,
+        loading,
+        error,
     }
 }
 

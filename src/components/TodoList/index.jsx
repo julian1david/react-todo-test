@@ -1,8 +1,13 @@
+import { useContext } from 'react';
+import { TodoContext } from '../../TodoContext';
 import { TodoItem } from '../TodoItem';
 
 import style from './TodoList.module.scss';
 
-export function TodoList({ todos, toggleTodo, searchValue, deleteToDo }) {
+export function TodoList() {
+
+	const { searchValue,todos } = useContext(TodoContext);
+
 	let searchTodos = [];
 
 	// Si la longitud de searchValue es mayor a uno
@@ -15,15 +20,10 @@ export function TodoList({ todos, toggleTodo, searchValue, deleteToDo }) {
 			return todoText.includes(searchText);
 		});
 	}
-
 	return (
 		<ul className={style.TodoList}>
 			{searchTodos.map(todo => (
-				<TodoItem
-					key={todo.id}
-					todo={todo}
-					toggleTodo={toggleTodo}
-					deleteToDo={deleteToDo}
+				<TodoItem key={todo.id} todo={todo}
 				/>
 			))}
 		</ul>

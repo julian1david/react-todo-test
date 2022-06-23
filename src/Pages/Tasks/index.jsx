@@ -5,29 +5,23 @@ import { TodoSearch } from '../../components/TodoSearch';
 import { TodoContext } from '../../TodoContext';
 import { CreateButton } from '../../components/Button';
 
-import style from './ListTasks.module.scss'
+import style from './Tasks.module.scss'
 
-export const ListTasks = () => {
+export const Tasks = () => {
 
-    const { dataStatus, todos, toggleTodo, searchValue, deleteToDo,handleClearAll} = useContext(TodoContext);
+    const { loading, error, todos, handleClearAll} = useContext(TodoContext);
 
     return (
-        <div className={style.ListTasks}>
-            {console.log('hola')}
+        <div className={style.Tasks}>
             <TodoCounter />
             <TodoSearch />
-            {dataStatus.error && <p>error</p>}
-            {dataStatus.loading && <p>We are Loadingin</p>}
+            {error && <p>error</p>}
+            {loading && <p>We are Loading</p>}
             {
-                (!dataStatus.loading && !todos.length)
+                (!loading && !todos.length)
                 && <p>Crea tu primer todo</p>
             }
-            <TodoList
-                todos={todos}
-                toggleTodo={toggleTodo}
-                searchValue={searchValue}
-                deleteToDo={deleteToDo}
-            />
+            <TodoList/>
             {todos.length > 0 && (
                 <CreateButton onClick={handleClearAll}>
                     Hide completed tasks

@@ -1,6 +1,11 @@
+import { useContext } from 'react';
+import { TodoContext } from '../../TodoContext';
 import style from './TodoItem.module.scss';
 
-export function TodoItem({ todo, toggleTodo, deleteToDo }) {
+export function TodoItem({ todo }) {
+	
+	const {  toggleTodo, deleteToDo, } = useContext(TodoContext);
+
 	const { id, task, completed } = todo;
 
 	const handleTodoClick = () => {
@@ -19,8 +24,8 @@ export function TodoItem({ todo, toggleTodo, deleteToDo }) {
 				checked={completed}
 				onChange={handleTodoClick}
 			/>
-			{/* Si el todo.completed es true agregle el tachado al text */}
-			<p className={`${todo.completed && style.TodoItem__text}`}>{task}</p>
+			{/* if completed add the CSS */}
+			<p className={`${completed && style.TodoItem__text}`}>{task}</p>
 			<span onClick={handleTodoDelete}>Delete</span>
 		</li>
 	);
