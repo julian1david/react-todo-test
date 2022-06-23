@@ -4,24 +4,25 @@ import { TodoCounter } from '../../components/TodoCounter';
 import { TodoSearch } from '../../components/TodoSearch';
 import { TodoContext } from '../../TodoContext';
 import { CreateButton } from '../../components/Button';
-import { Task } from '../Task'
+import { Task } from '../Task';
 import { Modal } from '../../components/Modal';
-
 
 import style from './Tasks.module.scss';
 
 export const Tasks = () => {
-	const { loading, 
-			error, 
-			totalTodos, 
-			handleClearAll, 
-			searchedTodos,
-			setOpenModal,
-			openModal } = useContext(TodoContext);
+	const {
+		loading,
+		error,
+		totalTodos,
+		handleClearAll,
+		searchedTodos,
+		setOpenModal,
+		openModal,
+	} = useContext(TodoContext);
 
 	const modalOpen = () => {
-		setOpenModal(!openModal)
-	}
+		setOpenModal(!openModal);
+	};
 
 	return (
 		<div className={style.Tasks}>
@@ -31,7 +32,7 @@ export const Tasks = () => {
 			{loading && <p>We are Loading</p>}
 			{!loading && !totalTodos && <p>Crea tu primer todo</p>}
 			<TodoList />
-			{(totalTodos > 0 && searchedTodos.length > 0) && (
+			{totalTodos > 0 && searchedTodos.length > 0 && (
 				<CreateButton onClick={handleClearAll}>
 					Hide completed tasks
 				</CreateButton>
@@ -40,10 +41,10 @@ export const Tasks = () => {
 				Modal Test
 			</CreateButton>
 			{openModal && (
-                <Modal >
-					<Task modalClass={true}/>
-                </Modal>
-            )}
+				<Modal>
+					<Task modalClass={true} />
+				</Modal>
+			)}
 		</div>
 	);
 };

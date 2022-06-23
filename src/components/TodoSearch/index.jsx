@@ -3,7 +3,6 @@ import { TodoContext } from '../../TodoContext';
 import style from '../../Pages/Task/Task.module.scss';
 
 function TodoSearch() {
-	
 	const { search, setSearch } = useContext(TodoContext);
 
 	const handleSearch = e => {

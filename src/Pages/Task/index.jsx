@@ -6,8 +6,8 @@ import { TodoContext } from '../../TodoContext';
 
 import style from './Task.module.scss';
 
-export const Task = ( {modalClass}) => {
-	// ToDo revisar la referencia cuando el modal esta abierto 
+export const Task = ({ modalClass }) => {
+	// ToDo revisar la referencia cuando el modal esta abierto
 	// ToDo la referencia se pierde después de que se abre el modal
 	const { handleTodoAdd, todoTaskRef } = useContext(TodoContext);
 
@@ -15,7 +15,7 @@ export const Task = ( {modalClass}) => {
 
 	return (
 		<div className={className}>
-				<Title>Add Todo</Title>
+			<Title>Add Todo</Title>
 			<h3>Task name</h3>
 			<input
 				className={style.TodoTaskCreate}

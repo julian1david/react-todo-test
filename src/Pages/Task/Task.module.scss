@@ -5,7 +5,7 @@
 	min-width: 30rem;
 	padding: 20px;
 	position: relative;
-	&__Modal{
+	&__Modal {
 		@extend .glassmorphism;
 		padding: 20px;
 		min-width: 400px;
@@ -29,5 +29,3 @@
 	font-size: 1.4rem;
 	vertical-align: 4px;
 }
-
-

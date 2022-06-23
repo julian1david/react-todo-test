@@ -8,9 +8,9 @@ export function TodoItem({ todo }) {
 	const { id, task, completed } = todo;
 
 	const onDelete = () => {
-		handleTodoDelete(id)
-	}
-	
+		handleTodoDelete(id);
+	};
+
 	return (
 		<li className={style.TodoItem}>
 			<input

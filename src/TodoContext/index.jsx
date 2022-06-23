@@ -8,7 +8,7 @@ const TodoContext = createContext();
 function TodoProvider(props) {
 	/* States */
 	const [searchValue, setSearch] = useState('');
-	const [openModal,setOpenModal] = useState(false)
+	const [openModal, setOpenModal] = useState(false);
 
 	/*  States with names */
 	const {
@@ -23,7 +23,7 @@ function TodoProvider(props) {
 	const totalTodos = todos.length;
 
 	/*  SearchedTodos */
-	let searchedTodos = []
+	let searchedTodos = [];
 	// Si la longitud de searchValue es mayor a uno
 	if (!searchValue.length >= 1) {
 		searchedTodos = todos;
@@ -50,7 +50,7 @@ function TodoProvider(props) {
 		});
 		setTodos(newItems);
 
-		if(openModal){
+		if (openModal) {
 			setOpenModal(false);
 		}
 		todoTaskRef.current.value = null;

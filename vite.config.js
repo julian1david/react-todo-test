@@ -7,5 +7,5 @@ export default defineConfig({
 	server: {
 		port: 5050,
 		open: true,
-	}
+	},
 });
