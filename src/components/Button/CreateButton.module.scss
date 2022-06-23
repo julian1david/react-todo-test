@@ -16,7 +16,7 @@
 	font-weight: bold;
 	color: $light-white;
 	cursor: pointer;
-
+	z-index: 1;
 	//Cuando regrese a su posición inicial
 	transform: rotate(0);
 	transition: 0.3s ease;

@@ -3,8 +3,7 @@ import { TodoContext } from '../../TodoContext';
 import styles from './TodoCounter.module.scss';
 
 function TodoCounter() {
-	
-	const {totalTodos, completedTodos } = useContext(TodoContext) 
+	const { totalTodos, completedTodos } = useContext(TodoContext);
 
 	return (
 		<h2 className={styles.TodoCounter}>
