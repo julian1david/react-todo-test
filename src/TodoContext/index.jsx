@@ -8,15 +8,22 @@ const TodoContext = createContext();
 function TodoProvider(props) {
 	/* States */
 	const [searchValue, setSearch] = useState('');
-	const [openModal, setOpenModal] = useState(false);
+	const [modalValue, setModal] = useState(false);
 
 	/*  States with names */
+	const {
+		item: listTasks,
+		saveItem: setLists,
+	}= useLocalStorage('lists',[])
+
+	
+
 	const {
 		item: todos,
 		saveItem: setTodos,
 		loading,
 		error,
-	} = useLocalStorage('TODOS_V1', []);
+	} = useLocalStorage('gika', []);
 
 	/* Complete todos checkbox */
 	const completedTodos = todos.filter(todo => todo.completed).length;
@@ -24,7 +31,8 @@ function TodoProvider(props) {
 
 	/*  SearchedTodos */
 	let searchedTodos = [];
-	// Si la longitud de searchValue es mayor a uno
+
+	/* Passs todos to searchValues */
 	if (!searchValue.length >= 1) {
 		searchedTodos = todos;
 	} else {
@@ -37,23 +45,29 @@ function TodoProvider(props) {
 
 	/* use ref of input to create task */
 	const todoTaskRef = useRef();
-	/* Create todotask */
+	
+	/* Create todoList */
 	const handleTodoAdd = () => {
-		const task = todoTaskRef.current.value;
-		console.log(todoTaskRef.current.value);
-		if (task === '') return;
-		const newItems = [...todos];
+		const listName = todoTaskRef.current.value;
+		if (listName === '') return;
+		const newItems = [...listTasks];
 		newItems.push({
 			id: uuid(),
-			completed: false,
-			task,
+			listName,
 		});
-		setTodos(newItems);
-
-		if (openModal) {
-			setOpenModal(false);
-		}
+		setLists(newItems);
 		todoTaskRef.current.value = null;
+	};
+
+	/* Add ToDo */
+	const addTodo = (task) => {
+		const newTodos = [...todos];
+		newTodos.push({
+			id: uuid(),
+			task,
+			completed: false
+		})
+		setTodos(newTodos);
 	};
 
 	/* Toogle checkbox */
@@ -76,6 +90,11 @@ function TodoProvider(props) {
 		setTodos(newTodos);
 	};
 
+	const listDelete = id => {
+		const newList = listTasks.filter(list => list.id !== id);
+		setLists(newList);
+	};
+
 	/* value provide a props information Doble key becose return an object */
 	return (
 		<TodoContext.Provider
@@ -88,13 +107,16 @@ function TodoProvider(props) {
 				totalTodos,
 				searchValue,
 				searchedTodos,
+				modalValue,
+				listTasks,
 				setSearch,
 				handleTodoAdd,
 				handleClearAll,
 				handleTodoDelete,
 				toggleTodo,
-				setOpenModal,
-				openModal,
+				setModal,
+				addTodo,
+				listDelete,
 			}}
 		>
 			{props.children}

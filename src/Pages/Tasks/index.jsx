@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { TodoList } from '../../components/TodoList';
+import { TodoItem } from '../../components/TodoItem';
 import { TodoCounter } from '../../components/TodoCounter';
 import { TodoSearch } from '../../components/TodoSearch';
 import { TodoContext } from '../../TodoContext';
 import { CreateButton } from '../../components/Button';
-import { Task } from '../Task';
 import { Modal } from '../../components/Modal';
 
 import style from './Tasks.module.scss';
+import { TodoAdd } from '../../components/TodoAdd';
 
 export const Tasks = () => {
 	const {
@@ -16,22 +17,26 @@ export const Tasks = () => {
 		totalTodos,
 		handleClearAll,
 		searchedTodos,
-		setOpenModal,
-		openModal,
+		setModal,
+		modalValue,
 	} = useContext(TodoContext);
 
 	const modalOpen = () => {
-		setOpenModal(!openModal);
+		setModal(!modalValue);
 	};
 
 	return (
 		<div className={style.Tasks}>
 			<TodoCounter />
 			<TodoSearch />
-			{error && <p>error</p>}
-			{loading && <p>We are Loading</p>}
-			{!loading && !totalTodos && <p>Crea tu primer todo</p>}
-			<TodoList />
+			<TodoList>
+				{error && <p>error</p>}
+				{loading && <p>We are Loading</p>}
+				{!loading && !totalTodos && <p>Crea tu primer todo</p>}
+				{searchedTodos.map(todo => (
+					<TodoItem key={todo.id} todo={todo} />
+				))}
+			</TodoList>
 			{totalTodos > 0 && searchedTodos.length > 0 && (
 				<CreateButton onClick={handleClearAll}>
 					Hide completed tasks
@@ -40,9 +45,9 @@ export const Tasks = () => {
 			<CreateButton kind={true} onClick={modalOpen}>
 				Modal Test
 			</CreateButton>
-			{openModal && (
+			{modalValue && (
 				<Modal>
-					<Task modalClass={true} />
+					<TodoAdd/>
 				</Modal>
 			)}
 		</div>

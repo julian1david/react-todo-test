@@ -1,17 +1,10 @@
-import { useContext } from 'react';
-import { TodoContext } from '../../TodoContext';
-import { TodoItem } from '../TodoItem';
-
 import style from './TodoList.module.scss';
 
-export function TodoList() {
-	const { searchedTodos } = useContext(TodoContext);
+export function TodoList({ children }) {
 
 	return (
 		<ul className={style.TodoList}>
-			{searchedTodos.map(todo => (
-				<TodoItem key={todo.id} todo={todo} />
-			))}
+			{children}
 		</ul>
 	);
 }

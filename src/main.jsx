@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './Pages/App';
 
-import './styles/Main.scss';
+import './styles/_vars.scss';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>

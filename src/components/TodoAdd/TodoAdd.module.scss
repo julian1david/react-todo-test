@@ -1,0 +1,9 @@
+@import '../../styles/Main.scss';
+
+.TodoAdd {
+    @extend .glassmorphism;
+    padding: 20px;
+    min-width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}

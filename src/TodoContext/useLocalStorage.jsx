@@ -6,27 +6,28 @@ function useLocalStorage(itemName, initialValue) {
 	const [error, setError] = useState(false);
 	/* This is a initial State */
 	const [item, setItem] = useState(initialValue);
-
+	
 	useEffect(() => {
 		setTimeout(() => {
 			try {
 				/* ItenName is a KEY to localStorage */
 				const localStorageItem = localStorage.getItem(itemName);
 				let parsedItem;
-				if (!localStorageItem || localStorageItem === undefined) {
+				if (!localStorageItem) {
 					localStorage.setItem(itemName, JSON.stringify(initialValue));
 					parsedItem = initialValue;
 				} else {
 					parsedItem = JSON.parse(localStorageItem);
 				}
-				setItem(parsedItem);
+					setItem(parsedItem);
+				
 				setLoading(false);
 			} catch (error) {
 				console.log(error);
 				setLoading(false);
 				setError(true);
 			}
-		}, 3000);
+		}, 1000);
 	}, []);
 
 	/* Save item in localStorage */
@@ -41,6 +42,7 @@ function useLocalStorage(itemName, initialValue) {
 			setError(true);
 		}
 	};
+
 
 	/* When we have more than one property, return an object */
 	return {
