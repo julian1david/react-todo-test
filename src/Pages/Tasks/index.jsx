@@ -43,7 +43,7 @@ export const Tasks = () => {
 				</CreateButton>
 			)}
 			<CreateButton kind={true} onClick={modalOpen}>
-				Modal Test
+				+
 			</CreateButton>
 			{modalValue && (
 				<Modal>

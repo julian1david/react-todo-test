@@ -1,6 +1,9 @@
 import { useContext, useState } from 'react'
 import { TodoContext } from '../../TodoContext'
 import { CreateButton } from '../Button'
+
+import style from './TodoAdd.module.scss';
+
 export const TodoAdd = () => {
 
   const { setModal, addTodo } = useContext(TodoContext);
@@ -33,7 +36,7 @@ export const TodoAdd = () => {
                 </textarea>
             </label>
             <div>
-              <CreateButton onClick={onCancel}>
+              <CreateButton className={style.TodoFormButton && style.TodoFormButtonAdd} onClick={onCancel}>
                 Cancel
               </CreateButton>
               <CreateButton type='submit'>

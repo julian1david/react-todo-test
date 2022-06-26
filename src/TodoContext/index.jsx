@@ -9,6 +9,7 @@ function TodoProvider(props) {
 	/* States */
 	const [searchValue, setSearch] = useState('');
 	const [modalValue, setModal] = useState(false);
+	const [listName, setListName] = useState('')
 
 	/*  States with names */
 	const {
@@ -17,13 +18,12 @@ function TodoProvider(props) {
 	}= useLocalStorage('lists',[])
 
 	
-
 	const {
 		item: todos,
 		saveItem: setTodos,
 		loading,
 		error,
-	} = useLocalStorage('gika', []);
+	} = useLocalStorage(listName, []);
 
 	/* Complete todos checkbox */
 	const completedTodos = todos.filter(todo => todo.completed).length;
@@ -117,6 +117,7 @@ function TodoProvider(props) {
 				setModal,
 				addTodo,
 				listDelete,
+				setListName,
 			}}
 		>
 			{props.children}

@@ -4,12 +4,12 @@ import style from './ListItem.module.scss'
 export function ListItem({ list }) {
 
 	const { listName } = list;
-	const { listDelete } = useContext(TodoContext);
+	const { listDelete, setListName } = useContext(TodoContext);
 
 	const handleTodos = (e) => {
 		const event = e.target.id;
 		if(event === 'viewTodos'){
-			console.log('hola')
+			setListName(list.listName)
 		}
 		if(event === 'deleteTodos'){
 			listDelete(list.id)
