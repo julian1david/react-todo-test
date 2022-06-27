@@ -2,14 +2,12 @@
     display: flex;
     justify-content: space-between;
     border-radius: 4px;
-    cursor: pointer;
-    background-color: rgb(217, 217, 217);
-    &:hover{
-        background-color: aqua;
-    }
 }
 
 .ListItemDelete{
-    height: 10px;
-    width: 30%;
+    cursor: pointer;
+    & img{
+        height: 18px;
+        width: 18px;
+    }
 }

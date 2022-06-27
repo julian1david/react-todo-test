@@ -1,0 +1,46 @@
+@import '../../styles/vars';
+
+.LoadingTodo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+	font-size: 1.6rem;
+	padding: 1rem;
+    color: grey;
+    animation: skeleton 1.5s linear infinite alternate;
+    border-radius: 4px;
+    &__circle{
+        min-width: 14px;
+        min-height: 14px;
+        animation: skeleton-loading 1.5s linear infinite alternate;
+        background-color: grey;
+        border-radius: 50%;
+    }
+    &__text{
+        width: 90%;
+        height: 14px;
+        animation: skeleton-loading 1.5s linear infinite alternate;
+        background-color: grey;
+    }
+    
+}
+
+@keyframes skeleton {
+    0% {
+        background-color: $gray-ligth;
+    }
+    100% {
+        background-color: hsl(200, 7%, 65%);
+    }
+    
+}
+
+@keyframes skeleton-loading {
+    0% {
+      background-color: grey;
+    }
+    100% {
+      background-color: hsl(200, 7%, 65%);
+    }
+  }

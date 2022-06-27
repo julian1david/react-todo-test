@@ -49,7 +49,7 @@ function TodoProvider(props) {
 	/* Create todoList */
 	const handleTodoAdd = () => {
 		const listName = todoTaskRef.current.value;
-		if (listName === '') return;
+		if (listName === '') return alert('Type on input');
 		const newItems = [...listTasks];
 		newItems.push({
 			id: uuid(),

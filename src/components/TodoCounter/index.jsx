@@ -6,9 +6,9 @@ function TodoCounter() {
 	const { totalTodos, completedTodos } = useContext(TodoContext);
 
 	return (
-		<h2 className={styles.TodoCounter}>
+		<p className={styles.TodoCounter}>
 			Completed {completedTodos} to {totalTodos} tasks
-		</h2>
+		</p>
 	);
 }
 

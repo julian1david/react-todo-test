@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { TodoContext } from '../../TodoContext';
-import style from '../../Pages/ListTasks/ListTasks.module.scss';
+import style from './TodoSearch.module.scss';
 
 function TodoSearch() {
 	const { search, setSearch } = useContext(TodoContext);
@@ -11,7 +11,7 @@ function TodoSearch() {
 
 	return (
 		<input
-			className={style.ListTaskCreate}
+			className={style.SearchTodo}
 			type='text'
 			placeholder='Search task'
 			onChange={handleSearch}

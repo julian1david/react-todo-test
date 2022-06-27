@@ -1,0 +1,6 @@
+@import '../../styles/Main.scss';
+
+.SearchTodo{
+    @extend .ListTaskCreate;
+    background-color: $gray-ligth;
+}

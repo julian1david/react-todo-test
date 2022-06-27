@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { TodoContext } from '../../TodoContext';
 import style from './TodoItem.module.scss';
+import deleteIcon from '../../assets/img/delete.png'
 
 export function TodoItem({ todo }) {
 	const { toggleTodo, handleTodoDelete } = useContext(TodoContext);
@@ -21,7 +22,9 @@ export function TodoItem({ todo }) {
 			/>
 			{/* if completed add the CSS */}
 			<p className={`${completed && style.TodoItem__text}`}>{task}</p>
-			<span onClick={onDelete}>Delete</span>
+			<span onClick={onDelete} className={style.deleteIcon}>
+				<img src={deleteIcon} alt="delete-icon" />
+			</span>
 		</li>
 	);
 }

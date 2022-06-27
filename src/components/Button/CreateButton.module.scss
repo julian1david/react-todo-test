@@ -7,9 +7,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 30px;
-	height: 30px;
-	background-color: $blue;
+	width: 40px;
+	height: 40px;
+	background-color: $red-ligth;
 	border: none;
 	border-radius: 40px;
 	font-size: 3rem;
@@ -25,12 +25,17 @@
 	z-index: 1;
 }
 
-.hideButton {
-	padding: 10px;
+.addButton:focus{
+	transform: scale(0.7);
+}
+
+.standardButton {
+	min-width: 100px;
+	padding: 8px;
 	align-self: center;
 	border: none;
-	background-color: $blue;
+	background-color: $red-ligth;
 	color: $light-white;
-	border-radius: 4px;
+	border-radius: 20px;
 	cursor: pointer;
 }

@@ -1,53 +1,56 @@
 @import '../../styles/Main.scss';
-
-.TodoAdd {
-    @extend .glassmorphism;
-    padding: 20px;
-    min-width: 400px;
-    height: 400px;
-    margin: 0 auto;
-}
-
 form {
-    width: 90%;
-    max-width: 300px;
+    width: 100%;
+    max-width: 320px;
     background-color: #fff;
-    padding: 33px 40px;
+    padding: 24px 30px;
     display: flex;
-    align-content: center;
     flex-direction: column;
+    border-radius: 4px ;
+    color: $gray-dark;
   }
   
   label {
-    text-align: center;
-    font-weight: bold;
-    font-size: #1E1E1F;
-    margin-bottom: 26px;
+    font-weight: 600;
+    color: #1E1E1F;
+    padding: 10px;
+  }
+
+  .InputTitle{
+    color: #1E1E1F;
+    background-color: #F9FBFC;
+    border-radius: 2px;
+    border: 1px solid #202329;
+    padding: 8px;
+    &::placeholder{
+      color: #a5a5a5;
+      font-family: 'Montserrat';
+    }
+    &:focus{
+      outline-color: $gray-dark;
+    }
+
   }
   
   textarea {
     background-color: #F9FBFC;
-    border: 2px, solid #202329;
+    border: 1px solid #202329;
     border-radius: 2px;
     box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
     color: #1E1E1F;
-    font-size: 20px;
-    text-align: center;
+    font-size: 2rem;
     padding: 12px;
-    height: 96px;
-    width: calc(100% - 25px);
+    height: 100px;
+    width: 100%;
+    &::placeholder{
+      color: #a5a5a5;
+      font-family: 'Montserrat';
+    }
+    &:focus{
+      outline-color: $gray-dark;
+    }
   }
-  
-  textarea::placeholder {
-  color: #a5a5a5;
-  font-family: 'Montserrat';
-  font-weight: 400;
-  }
-  
-  textarea:focus {
-    outline-color: #61DAFA;
-  }
-  
+
   .TodoFormButtonContainer {
     margin-top: 14px;
     display: flex;
@@ -56,24 +59,3 @@ form {
     width: 100%;
   }
   
-  .TodoFormButton {
-    cursor: pointer;
-    display: inline-block;
-    font-size: 20px;
-    color: #202329;
-    font-weight: 400;
-    width: 120px;
-    height: 48px;
-    border-radius: 2px;
-    border: none;
-    font-family: 'Montserrat';
-  }
-  
-  .TodoFormButtonAdd {
-    background-color: #61DAFA;
-    box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
-  }
-  
-  .TodoFormButtonCancel {
-    background: transparent;
-  }
