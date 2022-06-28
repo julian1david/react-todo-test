@@ -1,6 +1,6 @@
 import style from './LoadingTodo.module.scss';
 
-export const LoadingTodo = () => {
+export const TodoLoading = () => {
 	return (
 			<li className={style.LoadingTodo}>
 				<span className={style.LoadingTodo__circle}></span>

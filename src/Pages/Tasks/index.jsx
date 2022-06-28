@@ -6,8 +6,12 @@ import { TodoSearch } from '../../components/TodoSearch';
 import { TodoContext } from '../../TodoContext';
 import { CreateButton } from '../../components/Button';
 import { Modal } from '../../components/Modal';
-import { LoadingTodo } from '../../components/LoadingTodo';
 import { Title } from '../../components/Title';
+
+import { TodoLoading } from '../../components/TodoLoading';
+import { EmptyTodo } from '../../components/EmptyTodo';
+import { TodoError } from '../../components/TodoError';
+
 
 import style from './Tasks.module.scss';
 import { TodoAdd } from '../../components/TodoAdd';
@@ -17,24 +21,28 @@ export const Tasks = () => {
 		loading,
 		error,
 		totalTodos,
-		handleClearAll,
+		onClickDeleteAllTasks,
 		searchedTodos,
 		setModal,
 		modalValue,
+		setEditTask,
+		setTaskValue
 	} = useContext(TodoContext);
 
 	const modalOpen = () => {
+		setTaskValue('');
 		setModal(!modalValue);
+		setEditTask(false);
 	};
 
 	return (
 		<div className={style.Tasks}>
 			<Title>Task ToDo</Title>
 			<TodoSearch />
-			{!loading && !totalTodos && <p>Empty tasks, please create your task</p>}
+			{!loading && !totalTodos && <EmptyTodo/>}
 			<TodoList>
-				{loading && new Array(3).fill(0).map(i => <LoadingTodo key={i} />)}
-				{error && <p>error</p>}
+				{loading && new Array(3).fill().map((item, index) => <TodoLoading key={index} />)}
+				{error && <TodoError/>}
 				{searchedTodos.map(todo => (
 					<TodoItem key={todo.id} todo={todo} />
 				))}
@@ -42,7 +50,7 @@ export const Tasks = () => {
 			{totalTodos > 0 && (
 				<Fragment>
 					<TodoCounter />
-					<CreateButton onClick={handleClearAll}>
+					<CreateButton onClick={onClickDeleteAllTasks}>
 						Hide completed tasks
 					</CreateButton>
 				</Fragment>

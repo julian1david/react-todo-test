@@ -8,8 +8,11 @@ const TodoContext = createContext();
 function TodoProvider(props) {
 	/* States */
 	const [searchValue, setSearch] = useState('');
+	const [listName, setListName] = useState('');
+	const [taskValue, setTaskValue] = useState('');
+	const [taskEdit, setTaskEdit] = useState('');
 	const [modalValue, setModal] = useState(false);
-	const [listName, setListName] = useState('')
+	const [editTask, setEditTask] = useState(false);
 
 	/*  States with names */
 	const {
@@ -60,7 +63,12 @@ function TodoProvider(props) {
 	};
 
 	/* Add ToDo */
-	const addTodo = (task) => {
+	const onClickTaskAdd = (task) => {
+		console.log('entro a la funcion de agregar');
+		const isOnly = todos.some( item => item.task.toLowerCase() === task.toLowerCase())
+		if(isOnly) {
+			return alert('This task exist')
+		}
 		const newTodos = [...todos];
 		newTodos.push({
 			id: uuid(),
@@ -68,7 +76,28 @@ function TodoProvider(props) {
 			completed: false
 		})
 		setTodos(newTodos);
+		setModal(false);
+		setTaskValue('')
 	};
+	
+	/* Edit Todo */
+
+	const onClickEdit = (id) => {
+		setModal(true)
+		setEditTask(true)
+		const newTodo = todos.filter(todo => todo.id === id)
+		setTaskValue(newTodo[0].task)
+		setTaskEdit(newTodo[0]);
+	}
+
+	const onClickTaskUpdate = () => {    
+        // New Task
+		const newTodos = [...todos];
+		const todo = newTodos.find( todo => todo.id === taskEdit.id)
+		todo.task = taskValue
+		setTodos(newTodos)
+		setModal(false)
+    }
 
 	/* Toogle checkbox */
 	const toggleTodo = id => {
@@ -79,13 +108,13 @@ function TodoProvider(props) {
 	};
 
 	/* Clear all tasks */
-	const handleClearAll = () => {
+	const onClickDeleteAllTasks = () => {
 		const newTodos = todos.filter(todo => !todo.completed);
 		setTodos(newTodos);
 	};
 
-	/*  Delete only task */
-	const handleTodoDelete = id => {
+	/*  Delete only a task */
+	const onClickDelete = id => {
 		const newTodos = todos.filter(todo => todo.id !== id);
 		setTodos(newTodos);
 	};
@@ -111,13 +140,19 @@ function TodoProvider(props) {
 				listTasks,
 				setSearch,
 				handleTodoAdd,
-				handleClearAll,
-				handleTodoDelete,
+				onClickDeleteAllTasks,
+				onClickDelete,
 				toggleTodo,
 				setModal,
-				addTodo,
+				onClickTaskAdd,
 				listDelete,
 				setListName,
+				setEditTask,
+				editTask,
+				taskValue,
+				setTaskValue,
+				onClickEdit,
+				onClickTaskUpdate,
 			}}
 		>
 			{props.children}

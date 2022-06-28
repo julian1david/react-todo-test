@@ -4,12 +4,15 @@ import style from './TodoItem.module.scss';
 import deleteIcon from '../../assets/img/delete.png'
 
 export function TodoItem({ todo }) {
-	const { toggleTodo, handleTodoDelete } = useContext(TodoContext);
+	const { toggleTodo, 
+			onClickDelete,
+			onClickEdit
+		} = useContext(TodoContext);
 
 	const { id, task, completed } = todo;
-
+	
 	const onDelete = () => {
-		handleTodoDelete(id);
+		onClickDelete(id);
 	};
 
 	return (
@@ -22,8 +25,11 @@ export function TodoItem({ todo }) {
 			/>
 			{/* if completed add the CSS */}
 			<p className={`${completed && style.TodoItem__text}`}>{task}</p>
+			<span onClick={() => onClickEdit(id)}>
+				Editar
+			</span>
 			<span onClick={onDelete} className={style.deleteIcon}>
-				<img src={deleteIcon} alt="delete-icon" />
+				<img src={(deleteIcon)} alt="delete-icon" />
 			</span>
 		</li>
 	);
