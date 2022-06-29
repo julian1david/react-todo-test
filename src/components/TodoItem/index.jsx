@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { TodoContext } from '../../TodoContext';
 import style from './TodoItem.module.scss';
-import deleteIcon from '../../assets/img/delete.png'
+import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
+import { IconContext } from 'react-icons';
 
 export function TodoItem({ todo }) {
 	const { toggleTodo, 
@@ -16,6 +17,10 @@ export function TodoItem({ todo }) {
 	};
 
 	return (
+		<IconContext.Provider 
+			value={{
+				color: "#ff7360",
+			}}>
 		<li className={style.TodoItem}>
 			<input
 				className={style.Checkbox}
@@ -26,11 +31,12 @@ export function TodoItem({ todo }) {
 			{/* if completed add the CSS */}
 			<p className={`${completed && style.TodoItem__text}`}>{task}</p>
 			<span onClick={() => onClickEdit(id)}>
-				Editar
+				<FaEdit/>
 			</span>
 			<span onClick={onDelete} className={style.deleteIcon}>
-				<img src={(deleteIcon)} alt="delete-icon" />
+				<FaRegTrashAlt/>
 			</span>
 		</li>
+		</IconContext.Provider>
 	);
 }
