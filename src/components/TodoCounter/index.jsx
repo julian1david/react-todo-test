@@ -1,9 +1,6 @@
-import { useContext } from 'react';
-import { TodoContext } from '../../TodoContext';
 import styles from './TodoCounter.module.scss';
 
-function TodoCounter() {
-	const { totalTodos, completedTodos } = useContext(TodoContext);
+function TodoCounter( { totalTodos, completedTodos } ) {
 
 	const isMore = totalTodos > completedTodos;
 

@@ -1,17 +1,10 @@
 @import '../../styles/Main.scss';
 
-.ListTasks {
+.AsideTasks {
 	@extend .glassmorphism;
 	min-width: 30rem;
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-}
-
-.ContainerList{
-	width: 90%;
-	padding: 10px;
-	background-color: $gray-dark;
-	border-radius: 8px;
 }

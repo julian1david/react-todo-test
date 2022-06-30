@@ -1,9 +1,6 @@
-import { useContext } from 'react';
-import { TodoContext } from '../../TodoContext';
 import style from './TodoSearch.module.scss';
 
-function TodoSearch() {
-	const { search, setSearch } = useContext(TodoContext);
+function TodoSearch( { search, setSearch }) {
 
 	const handleSearch = e => {
 		setSearch(e.target.value);

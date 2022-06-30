@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TodoContext } from '../../TodoContext';
+import { TodoContext } from '../../Hooks/TodoContext';
 import style from './TodoItem.module.scss';
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
 import { IconContext } from 'react-icons';

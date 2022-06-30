@@ -10,7 +10,7 @@ function useLocalStorage(itemName, initialValue) {
 	useEffect(() => {
 		setTimeout(() => {
 			try {
-				/* ItenName is a KEY to localStorage */
+				/* Item is a KEY to localStorage */
 				const localStorageItem = localStorage.getItem(itemName);
 				let parsedItem;
 				if (!localStorageItem) {
