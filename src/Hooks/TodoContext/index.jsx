@@ -1,32 +1,27 @@
-import { createContext, useRef, useState } from 'react';
-import { useLocalStorage } from './useLocalStorage';
+import { createContext, useState, useContext } from 'react';
+import { useLocalStorage } from '../useLocalStorage';
 import { v4 as uuid } from 'uuid'; // Provide an id unique
+
 
 const TodoContext = createContext();
 
-/* Bridge to provider infor */
-function TodoProvider(props) {
+/* Bridge to provider info */
+function TodoProvider( { children } ) {
+
 	/* States */
 	const [searchValue, setSearch] = useState('');
-	const [listName, setListName] = useState('');
 	const [taskValue, setTaskValue] = useState('');
 	const [taskEdit, setTaskEdit] = useState('');
 	const [modalValue, setModal] = useState(false);
 	const [editTask, setEditTask] = useState(false);
-
-	/*  States with names */
-	const {
-		item: listTasks,
-		saveItem: setLists,
-	}= useLocalStorage('lists',[])
-
 	
+	/* State con Names */ 
 	const {
 		item: todos,
 		saveItem: setTodos,
 		loading,
 		error,
-	} = useLocalStorage(listName, []);
+	} = useLocalStorage('TODO_V1', []);
 
 	/* Complete todos checkbox */
 	const completedTodos = todos.filter(todo => todo.completed).length;
@@ -46,25 +41,8 @@ function TodoProvider(props) {
 		});
 	}
 
-	/* use ref of input to create task */
-	const todoTaskRef = useRef();
-	
-	/* Create todoList */
-	const handleTodoAdd = () => {
-		const listName = todoTaskRef.current.value;
-		if (listName === '') return alert('Type on input');
-		const newItems = [...listTasks];
-		newItems.push({
-			id: uuid(),
-			listName,
-		});
-		setLists(newItems);
-		todoTaskRef.current.value = null;
-	};
-
 	/* Add ToDo */
 	const onClickTaskAdd = (task) => {
-		console.log('entro a la funcion de agregar');
 		const isOnly = todos.some( item => item.task.toLowerCase() === task.toLowerCase())
 		if(isOnly) {
 			return alert('This task exist')
@@ -97,10 +75,11 @@ function TodoProvider(props) {
 		todo.task = taskValue
 		setTodos(newTodos)
 		setModal(false)
+		setEditTask(false)
     }
 
 	/* Toogle checkbox */
-	const toggleTodo = id => {
+	const onClickCompleteTodo = id => {
 		const newTodos = [...todos];
 		const todo = newTodos.find(todo => todo.id === id);
 		todo.completed = !todo.completed;
@@ -119,16 +98,11 @@ function TodoProvider(props) {
 		setTodos(newTodos);
 	};
 
-	const listDelete = id => {
-		const newList = listTasks.filter(list => list.id !== id);
-		setLists(newList);
-	};
-
+	
 	/* value provide a props information Doble key becose return an object */
 	return (
 		<TodoContext.Provider
 			value={{
-				todoTaskRef,
 				completedTodos,
 				loading,
 				error,
@@ -137,27 +111,35 @@ function TodoProvider(props) {
 				searchValue,
 				searchedTodos,
 				modalValue,
-				listTasks,
+				taskValue,
 				setSearch,
-				handleTodoAdd,
 				onClickDeleteAllTasks,
 				onClickDelete,
-				toggleTodo,
+				onClickCompleteTodo,
 				setModal,
 				onClickTaskAdd,
-				listDelete,
-				setListName,
 				setEditTask,
 				editTask,
-				taskValue,
 				setTaskValue,
 				onClickEdit,
 				onClickTaskUpdate,
 			}}
 		>
-			{props.children}
+			{ children }
 		</TodoContext.Provider>
 	);
 }
 
-export { TodoContext, TodoProvider };
+/* valide context isnt undefined */ 
+
+const useApi = () => {
+	const context = useContext(TodoContext);
+	if (context === undefined) {
+		const error = 'Not exist context';
+		throw error;
+	}
+	return context;
+};
+
+
+export { useApi, TodoProvider, TodoContext };

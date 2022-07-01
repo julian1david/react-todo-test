@@ -1,20 +1,21 @@
-import { useContext } from 'react';
-import { TodoContext } from '../../Hooks/TodoContext';
+import { useApi } from '../../Hooks/TodoContext';
 import { CreateButton } from '../Button';
 
 import style from './TodoAdd.module.scss';
 
 export const TodoAdd = () => {
-	const { setModal, 
-			onClickTaskAdd, 
-			editTask, 
-			setEditTask,
-			taskValue,
-			setTaskValue,
-			onClickTaskUpdate,
-			} = useContext(TodoContext);
+	const {
+		setModal,
+		onClickTaskAdd,
+		editTask,
+		setEditTask,
+		taskValue,
+		setTaskValue,
+		onClickTaskUpdate,
+	} = useApi();
 
 	const onCancel = () => {
+		setEditTask(false)
 		setModal(false);
 		setEditTask(false);
 	};
@@ -26,22 +27,16 @@ export const TodoAdd = () => {
 	const onSubmit = e => {
 		e.preventDefault();
 		if (taskValue === '') return;
-		if(e.target[2].id === 'editButton'){
-			onClickTaskUpdate()
+		if (e.target[2].id === 'editButton') {
+			onClickTaskUpdate();
 		}
-		if(e.target[2].id === 'addButton'){
+		if (e.target[2].id === 'addButton') {
 			onClickTaskAdd(taskValue);
 		}
 	};
 
 	return (
 		<form onSubmit={onSubmit}>
-			{/* 	<label htmlFor='Title'>Title</label>
-			<input 
-				type='text' 
-				placeholder='Title' 
-				name='Title'
-				className={style.InputTitle} /> */}
 			<label htmlFor='Description'>Description</label>
 			<textarea
 				placeholder='Description of your taks'
@@ -51,12 +46,15 @@ export const TodoAdd = () => {
 			></textarea>
 			<div className={style.TodoFormButtonContainer}>
 				<CreateButton onClick={onCancel}>Cancel</CreateButton>
-				{editTask ? 
+				{editTask ? (
 					<CreateButton id='editButton' type='submit'>
 						Edit Task
-					</CreateButton> :
-					<CreateButton id='addButton' type='submit'>Add Task</CreateButton>
-				}
+					</CreateButton>
+				) : (
+					<CreateButton id='addButton' type='submit'>
+						Add Task
+					</CreateButton>
+				)}
 			</div>
 		</form>
 	);
