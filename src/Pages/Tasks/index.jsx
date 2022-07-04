@@ -1,24 +1,23 @@
 import { Fragment } from 'react';
 
-import { TodoList } from '../../components/TodoList';
+import { TodoHeader } from '../../components/TodoHeader';
 import { TodoCounter } from '../../components/TodoCounter';
 import { TodoSearch } from '../../components/TodoSearch';
-import { TodoAdd } from '../../components/TodoAdd';
-import { CreateButton } from '../../components/Button';
-import { TodoHeader } from '../../components/TodoHeader';
+import { TodoList } from '../../components/TodoList';
 import { TodoItem } from '../../components/TodoItem';
+import { TodoAdd } from '../../components/TodoAdd';
+import { Title } from '../../components/Title';
+import { CreateButton } from '../../components/Button';
 import { Modal } from '../../components/Modal';
 
 import { TodoLoading } from '../../components/TodoLoading';
 import { EmptyTodo } from '../../components/EmptyTodo';
 import { TodoError } from '../../components/TodoError';
-
-import { useApi } from '../../Hooks/TodoContext';
+import { TodoProvider } from '../../Hooks/useTodoContext';
+import { useTodos } from './useTodos';
 import style from './Tasks.module.scss';
-import { Title } from '../../components/Title';
 
 export const Tasks = () => {
-
 	const {
 		loading,
 		error,
@@ -35,7 +34,7 @@ export const Tasks = () => {
 		onClickCompleteTodo,
 		onClickDelete,
 		onClickEdit,
-	} = useApi();
+	} = useTodos();
 
 	const modalOpen = () => {
 		setTaskValue('');
@@ -54,7 +53,6 @@ export const Tasks = () => {
 							totalTodos={totalTodos}
 							completedTodos={completedTodos}
 						/>
-						
 					</Fragment>
 				)}
 			</TodoHeader>
@@ -75,16 +73,18 @@ export const Tasks = () => {
 				))}
 			</TodoList>
 			<CreateButton onClick={onClickDeleteAllTasks}>
-							Hide completed tasks
-						</CreateButton>
+				Hide completed tasks
+			</CreateButton>
 			<CreateButton kind={true} onClick={modalOpen}>
 				+
 			</CreateButton>
-			{modalValue && (
-				<Modal>
-					<TodoAdd />
-				</Modal>
-			)}
+			<TodoProvider>
+				{modalValue && (
+					<Modal>
+						<TodoAdd />
+					</Modal>
+				)}
+			</TodoProvider>
 		</div>
 	);
 };

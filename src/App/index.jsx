@@ -1,10 +1,10 @@
-import { AppUI } from './AppUI';
-import { TodoProvider } from '../Hooks/TodoContext';
+import { Tasks } from '../Pages/Tasks';
+import style from './main.module.scss';
 
 export function App() {
 	return (
-		<TodoProvider>
-			<AppUI />
-		</TodoProvider>
+		<main className={style.MainContainer}>
+			<Tasks />
+		</main>
 	);
 }
