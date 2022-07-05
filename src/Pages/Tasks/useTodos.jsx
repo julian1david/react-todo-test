@@ -4,11 +4,11 @@ import { useLocalStorage } from '../../Hooks/useLocalStorage';
 
 
 /* Bridge to provider info */
-function useTodos({ children }) {
+function useTodos() {
 	/* States */
 	const [searchValue, setSearch] = useState('');
 	const [taskValue, setTaskValue] = useState('');
-	const [taskEdit, setTaskEdit] = useState('');
+	const [taskEdit, setTaskEdit] = useState(false);
 	const [modalValue, setModal] = useState(false);
 	const [editTask, setEditTask] = useState(false);
 

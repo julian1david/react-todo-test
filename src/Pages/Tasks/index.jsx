@@ -13,7 +13,6 @@ import { Modal } from '../../components/Modal';
 import { TodoLoading } from '../../components/TodoLoading';
 import { EmptyTodo } from '../../components/EmptyTodo';
 import { TodoError } from '../../components/TodoError';
-import { TodoProvider } from '../../Hooks/useTodoContext';
 import { useTodos } from './useTodos';
 import style from './Tasks.module.scss';
 
@@ -23,17 +22,21 @@ export const Tasks = () => {
 		error,
 		searchedTodos,
 		completedTodos,
-		setModal,
 		modalValue,
-		setEditTask,
-		totalTodos,
 		search,
+		totalTodos,
+		taskValue,
+		editTask,
+		setModal,
+		setEditTask,
 		setSearch,
 		setTaskValue,
 		onClickDeleteAllTasks,
 		onClickCompleteTodo,
 		onClickDelete,
 		onClickEdit,
+		onClickTaskAdd,
+		onClickTaskUpdate,
 	} = useTodos();
 
 	const modalOpen = () => {
@@ -41,6 +44,7 @@ export const Tasks = () => {
 		setModal(!modalValue);
 		setEditTask(false);
 	};
+
 
 	return (
 		<div className={style.Tasks}>
@@ -78,13 +82,19 @@ export const Tasks = () => {
 			<CreateButton kind={true} onClick={modalOpen}>
 				+
 			</CreateButton>
-			<TodoProvider>
 				{modalValue && (
 					<Modal>
-						<TodoAdd />
+						<TodoAdd
+							taskValue={taskValue}
+							editTask={editTask}
+							setTaskValue={setTaskValue}
+							setEditTask={setEditTask}
+							setModal={setModal}
+							onClickTaskAdd={onClickTaskAdd}
+							onClickTaskUpdate={onClickTaskUpdate}
+						/>
 					</Modal>
 				)}
-			</TodoProvider>
 		</div>
 	);
 };

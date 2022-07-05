@@ -1,23 +1,19 @@
-import { useApi } from '../../Hooks/useTodoContext';
 import { CreateButton } from '../Button';
 
 import style from './TodoAdd.module.scss';
 
-export const TodoAdd = () => {
-	const {
-		setModal,
-		onClickTaskAdd,
-		editTask,
-		setEditTask,
-		taskValue,
-		setTaskValue,
-		onClickTaskUpdate,
-	} = useApi();
-
+export const TodoAdd = ({
+	taskValue,
+	editTask,
+	setTaskValue,
+	setEditTask,
+	setModal,
+	onClickTaskAdd,
+	onClickTaskUpdate,
+}) => {
 	const onCancel = () => {
-		setEditTask(false)
-		setModal(false);
 		setEditTask(false);
+		setModal(false);
 	};
 
 	const onWrite = event => {
