@@ -61,7 +61,27 @@ export const Tasks = () => {
 				)}
 			</TodoHeader>
 			{!loading && !totalTodos && <EmptyTodo />}
-			<TodoList>
+			<TodoList
+				error={error}
+				loading={loading}
+				searchedTodos={searchedTodos}
+				onError ={() => <TodoError/>}
+				onLoading ={() => new Array(3).fill().map((item, index) => <TodoLoading key={index} />)}
+				onEmpty={() => <EmptyTodo/>}
+				render={ todo =>
+					<TodoItem
+						key={todo.id}
+						completed={todo.completed}
+						task={todo.task}
+						onClickCompleteTodo={() => onClickCompleteTodo(todo.id)}
+						onClickDelete={() => onClickDelete(todo.id)}
+						onClickEdit={() => onClickEdit(todo.id)}
+					/>
+				}
+			>
+
+			</TodoList>
+			{/* <TodoList>
 				{loading &&
 					new Array(3).fill().map((item, index) => <TodoLoading key={index} />)}
 				{error && <TodoError />}
@@ -75,7 +95,7 @@ export const Tasks = () => {
 						onClickEdit={() => onClickEdit(todo.id)}
 					/>
 				))}
-			</TodoList>
+			</TodoList> */}
 			<CreateButton onClick={onClickDeleteAllTasks}>
 				Hide completed tasks
 			</CreateButton>

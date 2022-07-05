@@ -25,10 +25,10 @@ export function TodoItem({
 				/>
 				{/* if completed add the CSS */}
 				<p className={`${completed && style.TodoItem__text}`}>{task}</p>
-				<span onClick={onClickEdit}>
+				<span onClick={onClickEdit} className={style.Icons}>
 					<FaEdit />
 				</span>
-				<span onClick={onClickDelete} className={style.deleteIcon}>
+				<span onClick={onClickDelete} className={style.Icons}>
 					<FaRegTrashAlt />
 				</span>
 			</li>

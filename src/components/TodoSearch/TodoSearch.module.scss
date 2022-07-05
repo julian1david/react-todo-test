@@ -3,4 +3,5 @@
 .SearchTodo{
     @extend .ListTaskCreate;
     background-color: $gray-ligth;
+    margin-bottom: 10px;
 }
