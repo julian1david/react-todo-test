@@ -15,6 +15,7 @@ import { EmptyTodo } from '../../components/EmptyTodo';
 import { TodoError } from '../../components/TodoError';
 import { useTodos } from './useTodos';
 import style from './Tasks.module.scss';
+import { EmptySearch } from '../../components/EmptySearch';
 
 export const Tasks = () => {
 	const {
@@ -23,7 +24,7 @@ export const Tasks = () => {
 		searchedTodos,
 		completedTodos,
 		modalValue,
-		search,
+		searchValue,
 		totalTodos,
 		taskValue,
 		editTask,
@@ -45,14 +46,13 @@ export const Tasks = () => {
 		setEditTask(false);
 	};
 
-
 	return (
 		<div className={style.Tasks}>
 			<TodoHeader>
 				<Title>Todo tasks</Title>
 				{totalTodos > 0 && (
 					<Fragment>
-						<TodoSearch search={search} setSearch={setSearch} />
+						<TodoSearch search={searchValue} setSearch={setSearch}/>
 						<TodoCounter
 							totalTodos={totalTodos}
 							completedTodos={completedTodos}
@@ -60,32 +60,20 @@ export const Tasks = () => {
 					</Fragment>
 				)}
 			</TodoHeader>
-			{!loading && !totalTodos && <EmptyTodo />}
 			<TodoList
 				error={error}
 				loading={loading}
+				totalTodos={totalTodos}
 				searchedTodos={searchedTodos}
-				onError ={() => <TodoError/>}
-				onLoading ={() => new Array(3).fill().map((item, index) => <TodoLoading key={index} />)}
-				onEmpty={() => <EmptyTodo/>}
-				render={ todo =>
-					<TodoItem
-						key={todo.id}
-						completed={todo.completed}
-						task={todo.task}
-						onClickCompleteTodo={() => onClickCompleteTodo(todo.id)}
-						onClickDelete={() => onClickDelete(todo.id)}
-						onClickEdit={() => onClickEdit(todo.id)}
-					/>
+				searchText={searchValue}
+				onError={() => <TodoError />}
+				onLoading={() =>
+					new Array(3).fill().map((item, index) => <TodoLoading key={index} />)
 				}
-			>
-
-			</TodoList>
-			{/* <TodoList>
-				{loading &&
-					new Array(3).fill().map((item, index) => <TodoLoading key={index} />)}
-				{error && <TodoError />}
-				{searchedTodos.map(todo => (
+				onEmpty={() => <EmptyTodo/>}
+				onEmptySearchTodo={(search) => 
+								<EmptySearch searchText={search}/>}
+				render={todo => (
 					<TodoItem
 						key={todo.id}
 						completed={todo.completed}
@@ -94,27 +82,29 @@ export const Tasks = () => {
 						onClickDelete={() => onClickDelete(todo.id)}
 						onClickEdit={() => onClickEdit(todo.id)}
 					/>
-				))}
-			</TodoList> */}
-			<CreateButton onClick={onClickDeleteAllTasks}>
-				Hide completed tasks
-			</CreateButton>
+				)}
+			></TodoList>
+			{totalTodos > 0  && !!searchedTodos.length && (
+				<CreateButton onClick={onClickDeleteAllTasks}>
+					Hide completed tasks
+				</CreateButton>
+			)}
 			<CreateButton kind={true} onClick={modalOpen}>
 				+
 			</CreateButton>
-				{modalValue && (
-					<Modal>
-						<TodoAdd
-							taskValue={taskValue}
-							editTask={editTask}
-							setTaskValue={setTaskValue}
-							setEditTask={setEditTask}
-							setModal={setModal}
-							onClickTaskAdd={onClickTaskAdd}
-							onClickTaskUpdate={onClickTaskUpdate}
-						/>
-					</Modal>
-				)}
+			{modalValue && (
+				<Modal>
+					<TodoAdd
+						taskValue={taskValue}
+						editTask={editTask}
+						setTaskValue={setTaskValue}
+						setEditTask={setEditTask}
+						setModal={setModal}
+						onClickTaskAdd={onClickTaskAdd}
+						onClickTaskUpdate={onClickTaskUpdate}
+					/>
+				</Modal>
+			)}
 		</div>
 	);
 };

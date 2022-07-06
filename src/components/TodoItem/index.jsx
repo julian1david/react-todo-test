@@ -9,7 +9,6 @@ export function TodoItem({
 	onClickDelete,
 	onClickEdit,
 }) {
-	
 	return (
 		<IconContext.Provider
 			value={{

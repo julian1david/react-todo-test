@@ -3,18 +3,25 @@ import style from './TodoList.module.scss';
 export function TodoList({
 	error,
 	loading,
-	searchTodos,
+	searchText,
+	searchedTodos,
+	totalTodos,
+	children,
+	render,
 	onEmpty,
 	onLoading,
 	onError,
-	children,
+	onEmptySearchTodo,
 }) {
 	return (
-		<section>
+		<section className={style.TodoListContainer}>
 			{error && onError()}
-			{loading && onLoading()}
-			{!loading && !searchTodos.length && onEmpty() }
-			<ul className={style.TodoList}>{children}</ul>
+			{!loading && !totalTodos && onEmpty()}
+			<ul className={style.TodoList}>
+				{loading && onLoading()}
+				{!!totalTodos && !searchedTodos.length && onEmptySearchTodo(searchText)}
+				{searchedTodos.map(render ?? children)}
+			</ul>
 		</section>
 	);
 }
