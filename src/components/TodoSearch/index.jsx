@@ -1,6 +1,6 @@
 import style from './TodoSearch.module.scss';
 
-function TodoSearch( { search, setSearch }) {
+function TodoSearch( { search, setSearch, loading }) {
 
 	const handleSearch = e => {
 		setSearch(e.target.value);
@@ -13,6 +13,7 @@ function TodoSearch( { search, setSearch }) {
 			placeholder='Search task'
 			onChange={handleSearch}
 			value={search}
+			disabled={loading}
 		/>
 	);
 }

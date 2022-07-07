@@ -37,18 +37,3 @@ body {
 	border: 1px solid rgba(241, 243, 251, 0.18);
 }
 
-.ListTaskCreate {
-	width: 90%;
-	padding: 10px 6px;
-	border: none;
-	border-radius: 8px;
-	background-color: $gray-dark;
-	color: $light-white;
-}
-.ListTaskCreate:focus {
-	outline: 0.2rem solid;
-}
-.ListTaskCreate::placeholder {
-	font-size: 1.4rem;
-	vertical-align: 4px;
-}

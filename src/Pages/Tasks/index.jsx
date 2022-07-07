@@ -48,13 +48,20 @@ export const Tasks = () => {
 
 	return (
 		<div className={style.Tasks}>
-			<TodoHeader>
-				<Title>Todo tasks</Title>
-				{totalTodos > 0 && 
+			<TodoHeader loading={loading}>
+				[<Title>Todo tasks</Title>,
+				{/* {totalTodos > 0 && 
 						<TodoSearch 
 							search={searchValue} 
-							setSearch={setSearch} />
-				}
+							setSearch={setSearch} 
+							loading={loading}
+							/>
+				} */}
+				<TodoSearch 
+							search={searchValue} 
+							setSearch={setSearch} 
+							// loading={loading}
+							/>]
 			</TodoHeader>
 			<TodoList
 				error={error}
@@ -78,7 +85,18 @@ export const Tasks = () => {
 						onClickEdit={() => onClickEdit(todo.id)}
 					/>
 				)}
-			></TodoList>
+			>
+				{/* {todo => (
+					<TodoItem
+						key={todo.id}
+						completed={todo.completed}
+						task={todo.task}
+						onClickCompleteTodo={() => onClickCompleteTodo(todo.id)}
+						onClickDelete={() => onClickDelete(todo.id)}
+						onClickEdit={() => onClickEdit(todo.id)}
+					/>
+				)} */}
+			</TodoList>
 			{totalTodos > 0 && !!searchedTodos.length && (
 				<Fragment>
 					<TodoCounter
