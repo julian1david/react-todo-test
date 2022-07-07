@@ -1,4 +1,5 @@
 const totalTodos = 0
+console.log(totalTodos > 0) // Esto da false
 const hayTodos = totalTodos 
 console.log(hayTodos) // Esto da 0
 const hayTodosBoolean = !!totalTodos 

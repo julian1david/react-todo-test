@@ -50,15 +50,11 @@ export const Tasks = () => {
 		<div className={style.Tasks}>
 			<TodoHeader>
 				<Title>Todo tasks</Title>
-				{totalTodos > 0 && (
-					<Fragment>
-						<TodoSearch search={searchValue} setSearch={setSearch}/>
-						<TodoCounter
-							totalTodos={totalTodos}
-							completedTodos={completedTodos}
-						/>
-					</Fragment>
-				)}
+				{totalTodos > 0 && 
+						<TodoSearch 
+							search={searchValue} 
+							setSearch={setSearch} />
+				}
 			</TodoHeader>
 			<TodoList
 				error={error}
@@ -70,9 +66,8 @@ export const Tasks = () => {
 				onLoading={() =>
 					new Array(3).fill().map((item, index) => <TodoLoading key={index} />)
 				}
-				onEmpty={() => <EmptyTodo/>}
-				onEmptySearchTodo={(search) => 
-								<EmptySearch searchText={search}/>}
+				onEmpty={() => <EmptyTodo />}
+				onEmptySearchTodo={search => <EmptySearch searchText={search} />}
 				render={todo => (
 					<TodoItem
 						key={todo.id}
@@ -84,10 +79,16 @@ export const Tasks = () => {
 					/>
 				)}
 			></TodoList>
-			{totalTodos > 0  && !!searchedTodos.length && (
-				<CreateButton onClick={onClickDeleteAllTasks}>
-					Hide completed tasks
-				</CreateButton>
+			{totalTodos > 0 && !!searchedTodos.length && (
+				<Fragment>
+					<TodoCounter
+						totalTodos={totalTodos}
+						completedTodos={completedTodos}
+					/>
+					<CreateButton onClick={onClickDeleteAllTasks}>
+						Hide completed tasks
+					</CreateButton>
+				</Fragment>
 			)}
 			<CreateButton kind={true} onClick={modalOpen}>
 				+
