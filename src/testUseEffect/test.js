@@ -17,3 +17,7 @@ console.log(hola)
 searchTodos.push('Item one')
 console.log(!searchTodos.length) // Esto da false.
 console.log(!!searchTodos.length) // Esto da true.
+
+
+var suma = 7 + "25";
+console.log(suma)

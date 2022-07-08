@@ -49,7 +49,7 @@ export const Tasks = () => {
 	return (
 		<div className={style.Tasks}>
 			<TodoHeader loading={loading}>
-				[<Title>Todo tasks</Title>,
+				<Title>Todo tasks</Title>
 				{/* {totalTodos > 0 && 
 						<TodoSearch 
 							search={searchValue} 
@@ -61,7 +61,7 @@ export const Tasks = () => {
 							search={searchValue} 
 							setSearch={setSearch} 
 							// loading={loading}
-							/>]
+							/>
 			</TodoHeader>
 			<TodoList
 				error={error}
