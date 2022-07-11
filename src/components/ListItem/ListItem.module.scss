@@ -1,13 +1,13 @@
-.ListItem{
-    display: flex;
-    justify-content: space-between;
-    border-radius: 4px;
+.ListItem {
+	display: flex;
+	justify-content: space-between;
+	border-radius: 4px;
 }
 
-.ListItemDelete{
-    cursor: pointer;
-    & img{
-        height: 18px;
-        width: 18px;
-    }
+.ListItemDelete {
+	cursor: pointer;
+	& img {
+		height: 18px;
+		width: 18px;
+	}
 }

@@ -1,20 +1,20 @@
 @import '../../styles/Main.scss';
 
-.SearchTodo{
-    width: 100%;
+.SearchTodo {
+	width: 100%;
 	padding: 10px 6px;
 	border: none;
 	border-radius: 8px;
 	color: $light-white;
-    background-color: $gray-ligth;
-    margin-bottom: 10px;
-    &:disabled{
-        opacity: 25%;
-    }
-    &:focus{
-	    outline: 0.2rem solid;
-    }
-    &::placeholder{
-        font-size: 1.4rem;
-    }
+	background-color: $gray-ligth;
+	margin-bottom: 10px;
+	&:disabled {
+		opacity: 25%;
+	}
+	&:focus {
+		outline: 0.2rem solid;
+	}
+	&::placeholder {
+		font-size: 1.4rem;
+	}
 }

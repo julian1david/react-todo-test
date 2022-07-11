@@ -2,20 +2,18 @@ import { createContext, useState, useContext } from 'react';
 import { useLocalStorage } from '../useLocalStorage';
 import { v4 as uuid } from 'uuid'; // Provide an id unique
 
-
 const TodoContext = createContext();
 
 /* Bridge to provider info */
-function TodoProvider( { children } ) {
-
+function TodoProvider({ children }) {
 	/* States */
 	const [searchValue, setSearch] = useState('');
 	const [taskValue, setTaskValue] = useState('');
 	const [taskEdit, setTaskEdit] = useState('');
 	const [modalValue, setModal] = useState(false);
 	const [editTask, setEditTask] = useState(false);
-	
-	/* State con Names */ 
+
+	/* State con Names */
 	const {
 		item: todos,
 		saveItem: setTodos,
@@ -42,41 +40,43 @@ function TodoProvider( { children } ) {
 	}
 
 	/* Add ToDo */
-	const onClickTaskAdd = (task) => {
-		const isOnly = todos.some( item => item.task.toLowerCase() === task.toLowerCase())
-		if(isOnly) {
-			return alert('This task exist')
+	const onClickTaskAdd = task => {
+		const isOnly = todos.some(
+			item => item.task.toLowerCase() === task.toLowerCase()
+		);
+		if (isOnly) {
+			return alert('This task exist');
 		}
 		const newTodos = [...todos];
 		newTodos.push({
 			id: uuid(),
 			task,
-			completed: false
-		})
+			completed: false,
+		});
 		setTodos(newTodos);
 		setModal(false);
-		setTaskValue('')
+		setTaskValue('');
 	};
-	
+
 	/* Edit Todo */
 
-	const onClickEdit = (id) => {
-		setModal(true)
-		setEditTask(true)
-		const newTodo = todos.filter(todo => todo.id === id)
-		setTaskValue(newTodo[0].task)
+	const onClickEdit = id => {
+		setModal(true);
+		setEditTask(true);
+		const newTodo = todos.filter(todo => todo.id === id);
+		setTaskValue(newTodo[0].task);
 		setTaskEdit(newTodo[0]);
-	}
+	};
 
-	const onClickTaskUpdate = () => {    
-        // New Task
+	const onClickTaskUpdate = () => {
+		// New Task
 		const newTodos = [...todos];
-		const todo = newTodos.find( todo => todo.id === taskEdit.id)
-		todo.task = taskValue
-		setTodos(newTodos)
-		setModal(false)
-		setEditTask(false)
-    }
+		const todo = newTodos.find(todo => todo.id === taskEdit.id);
+		todo.task = taskValue;
+		setTodos(newTodos);
+		setModal(false);
+		setEditTask(false);
+	};
 
 	/* Toogle checkbox */
 	const onClickCompleteTodo = id => {
@@ -98,7 +98,6 @@ function TodoProvider( { children } ) {
 		setTodos(newTodos);
 	};
 
-	
 	/* value provide a props information Doble key becose return an object */
 	return (
 		<TodoContext.Provider
@@ -125,12 +124,12 @@ function TodoProvider( { children } ) {
 				onClickTaskUpdate,
 			}}
 		>
-			{ children }
+			{children}
 		</TodoContext.Provider>
 	);
 }
 
-/* valide context isnt undefined */ 
+/* valide context isnt undefined */
 
 const useApi = () => {
 	const context = useContext(TodoContext);
@@ -140,6 +139,5 @@ const useApi = () => {
 	}
 	return context;
 };
-
 
 export { useApi, TodoProvider, TodoContext };

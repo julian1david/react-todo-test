@@ -57,11 +57,11 @@ export const Tasks = () => {
 							loading={loading}
 							/>
 				} */}
-				<TodoSearch 
-							search={searchValue} 
-							setSearch={setSearch} 
-							// loading={loading}
-							/>
+				<TodoSearch
+					search={searchValue}
+					setSearch={setSearch}
+					// loading={loading}
+				/>
 			</TodoHeader>
 			<TodoList
 				error={error}
