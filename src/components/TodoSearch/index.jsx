@@ -1,7 +1,6 @@
 import style from './TodoSearch.module.scss';
 
-function TodoSearch( { search, setSearch, loading }) {
-
+function TodoSearch({ search, setSearch, loading }) {
 	const handleSearch = e => {
 		setSearch(e.target.value);
 	};

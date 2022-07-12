@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { TodoContext } from '../../TodoContext';
 import style from './ListItem.module.scss';
-import deleteIcon from '../../assets/img/delete.png'
+import deleteIcon from '../../assets/img/delete.png';
 
 export function ListItem({ list }) {
 	const { listName } = list;
@@ -19,11 +19,7 @@ export function ListItem({ list }) {
 	return (
 		<li onClick={handleTodos} id='viewTodos' className={style.ListItem}>
 			<p>{listName}</p>
-			<span
-				className={style.ListItemDelete}
-				onClick={handleTodos}
-				
-			>
+			<span className={style.ListItemDelete} onClick={handleTodos}>
 				<img src={deleteIcon} alt='delete-icon' id='deleteTodos' />
 			</span>
 		</li>

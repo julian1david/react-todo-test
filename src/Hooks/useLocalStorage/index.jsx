@@ -6,7 +6,7 @@ function useLocalStorage(itemName, initialValue) {
 	const [error, setError] = useState(false);
 	/* This is a initial State */
 	const [item, setItem] = useState(initialValue);
-	
+
 	useEffect(() => {
 		setTimeout(() => {
 			try {
@@ -19,8 +19,8 @@ function useLocalStorage(itemName, initialValue) {
 				} else {
 					parsedItem = JSON.parse(localStorageItem);
 				}
-					setItem(parsedItem);
-				
+				setItem(parsedItem);
+
 				setLoading(false);
 			} catch (error) {
 				console.log(error);
@@ -42,7 +42,6 @@ function useLocalStorage(itemName, initialValue) {
 			setError(true);
 		}
 	};
-
 
 	/* When we have more than one property, return an object */
 	return {

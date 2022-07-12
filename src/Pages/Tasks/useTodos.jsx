@@ -1,7 +1,6 @@
-import { useState  } from 'react';
+import { useState } from 'react';
 import { v4 as uuid } from 'uuid'; // Provide an id unique
 import { useLocalStorage } from '../../Hooks/useLocalStorage';
-
 
 /* Bridge to provider info */
 function useTodos() {
@@ -122,6 +121,4 @@ function useTodos() {
 	};
 }
 
-
-
-export { useTodos  };
+export { useTodos };
