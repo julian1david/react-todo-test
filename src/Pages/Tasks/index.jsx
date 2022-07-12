@@ -50,18 +50,13 @@ export const Tasks = () => {
 		<div className={style.Tasks}>
 			<TodoHeader loading={loading}>
 				<Title>Todo tasks</Title>
-				{/* {totalTodos > 0 && 
+				 {totalTodos > 0 && 
 						<TodoSearch 
 							search={searchValue} 
 							setSearch={setSearch} 
 							loading={loading}
 							/>
-				} */}
-				<TodoSearch 
-							search={searchValue} 
-							setSearch={setSearch} 
-							// loading={loading}
-							/>
+				} 
 			</TodoHeader>
 			<TodoList
 				error={error}
