@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export const useStorageListener = ( { syncronized } ) => {
+export const useStorageListener = (syncronized) => {
 		/* Si hay un cambio en el navegador cambie este estado */
 		const [storageChange, setStorageChange] = useState(false);
 

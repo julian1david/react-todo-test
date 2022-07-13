@@ -17,7 +17,7 @@ import { useTodos } from './useTodos';
 import style from './Tasks.module.scss';
 import { EmptySearch } from '../../components/EmptySearch';
 // import { ChangeAlertWithStorageListener } from '../../components/ChangeAlert';
-import { ChangeAlert  } from '../../ChangeAlert';
+import { ChangeAlert  } from '../../components/ChangeAlert';
 
 export const Tasks = () => {
 	const {
