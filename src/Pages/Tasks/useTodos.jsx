@@ -15,6 +15,8 @@ function useTodos() {
 	const {
 		item: todos,
 		saveItem: setTodos,
+		syncronizedItem: syncronizedTodo,
+		syncronized: syncronizedTodos,
 		loading,
 		error,
 	} = useLocalStorage('TODO_V1', []);
@@ -107,6 +109,8 @@ function useTodos() {
 		searchedTodos,
 		modalValue,
 		taskValue,
+		syncronizedTodo,
+		syncronizedTodos,
 		setSearch,
 		onClickDeleteAllTasks,
 		onClickDelete,

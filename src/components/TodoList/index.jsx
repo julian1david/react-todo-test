@@ -20,7 +20,7 @@ export function TodoList({
 			<ul className={style.TodoList}>
 				{loading && onLoading()}
 				{!!totalTodos && !searchedTodos.length && onEmptySearchTodo(searchText)}
-				{searchedTodos.map(render ?? children)}
+				{(!loading && !error) && searchedTodos.map(render ?? children)}
 			</ul>
 		</section>
 	);

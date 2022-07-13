@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 function useLocalStorage(itemName, initialValue) {
 	/* State whit loading and error status  */
 	const [loading, setLoading] = useState(true);
+	/* Is synchronized with all windows? */
+	const [syncronizedItem, setsyncronizedItem] = useState(true);
 	const [error, setError] = useState(false);
 	/* This is a initial State */
 	const [item, setItem] = useState(initialValue);
@@ -20,15 +22,15 @@ function useLocalStorage(itemName, initialValue) {
 					parsedItem = JSON.parse(localStorageItem);
 				}
 				setItem(parsedItem);
-
 				setLoading(false);
+				setsyncronizedItem(true);
 			} catch (error) {
 				console.log(error);
 				setLoading(false);
 				setError(true);
 			}
-		}, 1000);
-	}, []);
+		}, 3000);
+	}, [syncronizedItem]);
 
 	/* Save item in localStorage */
 	const saveItem = newItem => {
@@ -43,12 +45,19 @@ function useLocalStorage(itemName, initialValue) {
 		}
 	};
 
+	const syncronized = () => {
+		setLoading(true);
+		setsyncronizedItem(false)
+	}
+
 	/* When we have more than one property, return an object */
 	return {
 		item,
 		saveItem,
 		loading,
 		error,
+		syncronizedItem,
+		syncronized
 	};
 }
 

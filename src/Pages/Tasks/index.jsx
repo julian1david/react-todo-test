@@ -16,6 +16,8 @@ import { TodoError } from '../../components/TodoError';
 import { useTodos } from './useTodos';
 import style from './Tasks.module.scss';
 import { EmptySearch } from '../../components/EmptySearch';
+// import { ChangeAlertWithStorageListener } from '../../components/ChangeAlert';
+import { ChangeAlert  } from '../../ChangeAlert';
 
 export const Tasks = () => {
 	const {
@@ -28,6 +30,8 @@ export const Tasks = () => {
 		totalTodos,
 		taskValue,
 		editTask,
+		syncronizedTodo,
+		syncronizedTodos,
 		setModal,
 		setEditTask,
 		setSearch,
@@ -40,6 +44,7 @@ export const Tasks = () => {
 		onClickTaskUpdate,
 	} = useTodos();
 
+
 	const modalOpen = () => {
 		setTaskValue('');
 		setModal(!modalValue);
@@ -50,12 +55,18 @@ export const Tasks = () => {
 		<div className={style.Tasks}>
 			<TodoHeader loading={loading}>
 				<Title>Todo tasks</Title>
-				{totalTodos > 0 && (
-					<TodoSearch
-						search={searchValue}
-						setSearch={setSearch}
-					/>
-				)}
+				{/* {totalTodos > 0 && 
+						<TodoSearch 
+							search={searchValue} 
+							setSearch={setSearch} 
+							loading={loading}
+							/>
+				} */}
+				<TodoSearch
+					search={searchValue}
+					setSearch={setSearch}
+					// loading={loading}
+				/>
 			</TodoHeader>
 			<TodoList
 				error={error}
@@ -69,7 +80,7 @@ export const Tasks = () => {
 				}
 				onEmpty={() => <EmptyTodo />}
 				onEmptySearchTodo={search => <EmptySearch searchText={search} />}
-				render={todo => (
+				render={todo => 
 					<TodoItem
 						key={todo.id}
 						completed={todo.completed}
@@ -78,9 +89,9 @@ export const Tasks = () => {
 						onClickDelete={() => onClickDelete(todo.id)}
 						onClickEdit={() => onClickEdit(todo.id)}
 					/>
-				)}
+			}
 			/>
-			{totalTodos > 0 && !!searchedTodos.length && (
+			{totalTodos > 0 && !!searchedTodos.length  && syncronizedTodo&& (
 				<Fragment>
 					<TodoCounter
 						totalTodos={totalTodos}
@@ -107,6 +118,15 @@ export const Tasks = () => {
 					/>
 				</Modal>
 			)}
+			<ChangeAlert
+				syncronized={syncronizedTodos}
+			/>
+			{/* 
+				// With Hocs
+			<ChangeAlertWithStorageListener
+				syncronized={syncronizedTodos}
+			/> */}
 		</div>
 	);
 };
+
