@@ -4,7 +4,7 @@ function TodoSearch({ search, setSearch, loading }) {
 	const handleSearch = e => {
 		setSearch(e.target.value);
 	};
-	
+
 	return (
 		<input
 			className={style.SearchTodo}

@@ -7,17 +7,12 @@ export const ChangeAlert = ({ syncronized }) => {
 	/* With hocks this send how props */
 	const { show, toggleShow } = useStorageListener(syncronized);
 
-	
-
 	if (show) {
 		return (
 			<Modal kind={true}>
 				<div className={style.altertContainer}>
 					<h3>There are changes in localStorage</h3>
-					<button
-						onClick={toggleShow}
-						className={buttonStyle.standardButton}
-					>
+					<button onClick={toggleShow} className={buttonStyle.standardButton}>
 						Reload State
 					</button>
 				</div>

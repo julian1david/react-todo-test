@@ -47,8 +47,8 @@ function useLocalStorage(itemName, initialValue) {
 
 	const syncronized = () => {
 		setLoading(true);
-		setsyncronizedItem(false)
-	}
+		setsyncronizedItem(false);
+	};
 
 	/* When we have more than one property, return an object */
 	return {
@@ -57,7 +57,7 @@ function useLocalStorage(itemName, initialValue) {
 		loading,
 		error,
 		syncronizedItem,
-		syncronized
+		syncronized,
 	};
 }
 

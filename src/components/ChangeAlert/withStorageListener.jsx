@@ -21,10 +21,6 @@ export const withStorageListener = WrappedComponent => {
 			setStorageChange(false);
 		};
 
-		return (
-				<WrappedComponent 
-					show={storageChange} 
-					toggleShow={toggleShow} />
-		);
+		return <WrappedComponent show={storageChange} toggleShow={toggleShow} />;
 	};
 };

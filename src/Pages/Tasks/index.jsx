@@ -17,7 +17,7 @@ import { useTodos } from './useTodos';
 import style from './Tasks.module.scss';
 import { EmptySearch } from '../../components/EmptySearch';
 // import { ChangeAlertWithStorageListener } from '../../components/ChangeAlert';
-import { ChangeAlert  } from '../../components/ChangeAlert';
+import { ChangeAlert } from '../../components/ChangeAlert';
 
 export const Tasks = () => {
 	const {
@@ -43,7 +43,6 @@ export const Tasks = () => {
 		onClickTaskAdd,
 		onClickTaskUpdate,
 	} = useTodos();
-
 
 	const modalOpen = () => {
 		setTaskValue('');
@@ -80,7 +79,7 @@ export const Tasks = () => {
 				}
 				onEmpty={() => <EmptyTodo />}
 				onEmptySearchTodo={search => <EmptySearch searchText={search} />}
-				render={todo => 
+				render={todo => (
 					<TodoItem
 						key={todo.id}
 						completed={todo.completed}
@@ -89,9 +88,9 @@ export const Tasks = () => {
 						onClickDelete={() => onClickDelete(todo.id)}
 						onClickEdit={() => onClickEdit(todo.id)}
 					/>
-			}
+				)}
 			/>
-			{totalTodos > 0 && !!searchedTodos.length  && syncronizedTodo&& (
+			{totalTodos > 0 && !!searchedTodos.length && syncronizedTodo && (
 				<Fragment>
 					<TodoCounter
 						totalTodos={totalTodos}
@@ -118,9 +117,7 @@ export const Tasks = () => {
 					/>
 				</Modal>
 			)}
-			<ChangeAlert
-				syncronized={syncronizedTodos}
-			/>
+			<ChangeAlert syncronized={syncronizedTodos} />
 			{/* 
 				// With Hocs
 			<ChangeAlertWithStorageListener
@@ -129,4 +126,3 @@ export const Tasks = () => {
 		</div>
 	);
 };
-
