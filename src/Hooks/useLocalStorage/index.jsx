@@ -10,6 +10,7 @@ function useLocalStorage(itemName, initialValue) {
 	const [item, setItem] = useState(initialValue);
 
 	useEffect(() => {
+		console.log("ejecuta el useEffect");
 		setTimeout(() => {
 			try {
 				/* Item is a KEY to localStorage */
