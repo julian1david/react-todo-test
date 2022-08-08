@@ -20,29 +20,34 @@ import { EmptySearch } from '../../components/EmptySearch';
 import { ChangeAlert } from '../../components/ChangeAlert';
 
 export const Tasks = () => {
-	const {
+	const { states, stateUpdaters } = useTodos();
+
+	const { 
+		completedTodos,
 		loading,
 		error,
-		searchedTodos,
-		completedTodos,
-		modalValue,
-		searchValue,
 		totalTodos,
+		searchValue,
+		searchedTodos,
+		modalValue,
 		taskValue,
-		editTask,
 		syncronizedTodo,
+		editTask,
+	} = states;
+
+	const {
 		syncronizedTodos,
+		setSearch,
 		setModal,
 		setEditTask,
-		setSearch,
 		setTaskValue,
 		onClickDeleteAllTasks,
-		onClickCompleteTodo,
 		onClickDelete,
-		onClickEdit,
+		onClickCompleteTodo,
 		onClickTaskAdd,
+		onClickEdit,
 		onClickTaskUpdate,
-	} = useTodos();
+	} = stateUpdaters;
 
 	const modalOpen = () => {
 		setTaskValue('');

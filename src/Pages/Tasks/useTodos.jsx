@@ -100,30 +100,34 @@ function useTodos() {
 	};
 
 	/* value provide a props information Doble key becose return an object */
-	return {
+
+	const states = {
 		completedTodos,
 		loading,
 		error,
-		todos,
 		totalTodos,
 		searchValue,
 		searchedTodos,
 		modalValue,
 		taskValue,
 		syncronizedTodo,
+		editTask,
+	}
+
+	const stateUpdaters = {
 		syncronizedTodos,
 		setSearch,
+		setModal,
+		setEditTask,
+		setTaskValue,
 		onClickDeleteAllTasks,
 		onClickDelete,
 		onClickCompleteTodo,
-		setModal,
 		onClickTaskAdd,
-		setEditTask,
-		editTask,
-		setTaskValue,
 		onClickEdit,
 		onClickTaskUpdate,
-	};
+	}
+	return { states, stateUpdaters};
 }
 
 export { useTodos };
