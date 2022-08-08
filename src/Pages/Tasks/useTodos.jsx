@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuid } from 'uuid'; // Provide an id unique
-import { useLocalStorage } from '../../Hooks/useLocalStorage';
+import { useLocalStorageReducer } from '../../Hooks/useLocalStorageReducer';
 
 /* Bridge to provider info */
 function useTodos() {
@@ -16,12 +16,13 @@ function useTodos() {
 		item: todos,
 		saveItem: setTodos,
 		syncronizedItem: syncronizedTodo,
-		syncronized: syncronizedTodos,
+		syncronizeItem: syncronizedTodos,
 		loading,
 		error,
-	} = useLocalStorage('TODO_V1', []);
+	} = useLocalStorageReducer('TODO_V1', []);
 
 	/* Complete todos checkbox */
+	/* derivatives states */
 	const completedTodos = todos.filter(todo => todo.completed).length;
 	const totalTodos = todos.length;
 
