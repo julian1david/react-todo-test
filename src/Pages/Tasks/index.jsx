@@ -12,7 +12,7 @@ import { Modal } from '../../components/Modal';
 
 import { TodoLoading } from '../../components/TodoLoading';
 import { EmptyTodo } from '../../components/EmptyTodo';
-import { TodoError } from '../../components/TodoError';
+import { TodoError } from '@/components/TodoError';
 import { useTodos } from './useTodos';
 import style from './Tasks.module.scss';
 import { EmptySearch } from '../../components/EmptySearch';
