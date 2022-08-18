@@ -22,7 +22,7 @@ import { ChangeAlert } from '../../components/ChangeAlert';
 export const Tasks = () => {
 	const { states, stateUpdaters } = useTodos();
 
-	const { 
+	const {
 		completedTodos,
 		loading,
 		error,

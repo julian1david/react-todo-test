@@ -9,7 +9,7 @@ Mira **[ToDo-App](https://julian1david-react-todo.netlify.app/)** para conocer c
 ### Instalación 🔧
 
 ```
-git clone https://github.com/julian1david/react-todo-test
+git clone https://github.com/julianf-dev/react-todo-test
 ```
 
 ```
@@ -36,7 +36,7 @@ Cualquier contirbución al proyecto es bien recibida !
 
 ## Autor ✒️
 
-- **Julian F** - [julian1f](https://github.com/julian1david)
+- **Julian F** - [julian1f](https://github.com/julianf-dev)
 
 ## Licencia 📄
 
@@ -44,4 +44,4 @@ Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE](LICENSE) 
 
 ---
 
-Hecho con ❤️ por [julian1f](https://github.com/julian1david) 😊
+Hecho con ❤️ por [julian1f](https://github.com/julianf-dev) 😊

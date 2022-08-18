@@ -112,7 +112,7 @@ function useTodos() {
 		taskValue,
 		syncronizedTodo,
 		editTask,
-	}
+	};
 
 	const stateUpdaters = {
 		syncronizedTodos,
@@ -126,8 +126,8 @@ function useTodos() {
 		onClickTaskAdd,
 		onClickEdit,
 		onClickTaskUpdate,
-	}
-	return { states, stateUpdaters};
+	};
+	return { states, stateUpdaters };
 }
 
 export { useTodos };
